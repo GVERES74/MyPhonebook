@@ -1,0 +1,5 @@
+2018.08.08.
+- Mûködik az új kontakt felvitele, természetesen még adatbáziskapcsolat nélkül:
+@FXML
+    private void addNewContact(){
+        data.add(new Person(inputfirstname.getText(), inputlastname.getText(), inputemail.getText(),inputemail2.getText(),inputphone.getText(),inputphone2.getText(),textareanotes.getText(), null));} 

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="anchorpane" fx:id="anchorpane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="960.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="phonebook.ViewController">
+    <children>
+      <AnchorPane id="bkgpane" fx:id="bkgpane" prefHeight="960.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar id="menubar" fx:id="menubar">
+              <menus>
+                <Menu mnemonicParsing="false" text="Fájl">
+                  <items>
+                    <MenuItem id="menu_file_exit" fx:id="menu_file_exit" mnemonicParsing="false" onAction="#handleButtonAction" text="Kilépés" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Beállítás">
+                  <items>
+                        <MenuItem id="menu_setup_background" fx:id="menu_setup_background" mnemonicParsing="false" onAction="#setupBackground" text="Háttérszín beállítása" />
+                  </items>
+                </Menu>
+                  <Menu id="Menu_Delete" fx:id="Menu_Delete" mnemonicParsing="false" text="Műveletek">
+                    <items>
+                      <MenuItem id="MenuItem_Delete" fx:id="MenuItem_Delete" mnemonicParsing="false" text="Kontakt törlése" />
+                    </items>
+                  </Menu>
+                <Menu id="menu_info" fx:id="menu_info" mnemonicParsing="false" text="Info">
+                  <items>
+                    <MenuItem id="menu_info_sysinfo" fx:id="menu_info_sysinfo" mnemonicParsing="false" onAction="#showMenuSysInfo" text="Rendszer info" />
+                        <MenuItem id="menu_info_proginfo" fx:id="menu_info_proginfo" mnemonicParsing="false" onAction="#showMenuInfoPanel" text="Program info" />
+                        <MenuItem id="menu_info_coderinfo" fx:id="menu_info_coderinfo" mnemonicParsing="false" onAction="#showMenuCoderInfo" text="Készítő" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+              <Button id="exitbutton" fx:id="exitbutton" layoutX="1325.0" layoutY="860.0" onAction="#handleButtonAction" text="Kilépés" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="20.0" />
+              <Label fx:id="label" layoutX="600.0" layoutY="20.0" minHeight="16" minWidth="69" text="MyNotebook- Application" textAlignment="CENTER" AnchorPane.leftAnchor="600.0" AnchorPane.rightAnchor="627.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label id="oslabel" fx:id="oslabel" layoutX="450.0" layoutY="900.0" text="Operációs rendszer: ismeretlen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="814.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Separator layoutX="5.0" layoutY="890.0" prefHeight="17.0" prefWidth="1385.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="10.0" />
+            <Label id="userlabel" fx:id="userlabel" layoutX="700.0" layoutY="900.0" text="Felhasználó: ismeretlen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="600.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Pane id="newcontactpane" fx:id="newcontactpane" layoutX="1180.0" layoutY="160.0" prefHeight="800.0" prefWidth="227.0" AnchorPane.bottomAnchor="120.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="40.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="770.0" layoutY="30.0" stroke="#e47777" strokeType="INSIDE" width="227.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="2.0" fill="#a88c5d" height="30.0" stroke="#ab8686" strokeType="INSIDE" width="227.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="7.0" prefHeight="17.0" prefWidth="227.0" text="Új kontakt hozzáadása" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField id="inputfirstname" fx:id="inputfirstname" layoutX="13.0" layoutY="241.0" promptText="Vezetéknév" style="-fx-border-color: #aaafff; -fx-background-color: #ffffff;" />
+                  <TextField id="inputlastname" fx:id="inputlastname" layoutX="13.0" layoutY="301.0" promptText="Keresztnév" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="inputdivision" fx:id="inputdivision" layoutX="13.0" layoutY="361.0" prefHeight="25.0" prefWidth="205.0" promptText="Osztály" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="inputjobpos" fx:id="inputjobpos" layoutX="13.0" layoutY="421.0" prefHeight="25.0" prefWidth="205.0" promptText="Beosztás" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="inputemail" fx:id="inputemail" layoutX="13.0" layoutY="481.0" prefHeight="25.0" prefWidth="205.0" promptText="E-mail cím" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="inputemail2" fx:id="inputemail2" layoutX="13.0" layoutY="541.0" prefHeight="25.0" prefWidth="205.0" promptText="E-mail cím" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="inputphone" fx:id="inputphone" layoutX="13.0" layoutY="601.0" prefHeight="25.0" prefWidth="205.0" promptText="Telefonszám" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="inputphone2" fx:id="inputphone2" layoutX="13.0" layoutY="661.0" prefHeight="25.0" prefWidth="205.0" promptText="Telefonszám" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextArea id="textareanotes" fx:id="textareanotes" layoutX="13.0" layoutY="721.0" prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <Button id="btn_felvitel" fx:id="btn_felvitel" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="765.0" mnemonicParsing="false" onAction="#addNewContact" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" text="Felvitel" textAlignment="CENTER" />
+                  <Label layoutX="13.0" layoutY="221.0" text="Vezetéknév" />
+                  <Label layoutX="13.0" layoutY="281.0" text="Keresztnév" />
+                  <Label layoutX="13.0" layoutY="341.0" text="Osztály" />
+                  <Label layoutX="13.0" layoutY="401.0" text="Beosztás" />
+                  <Label layoutX="13.0" layoutY="461.0" text="E-mail (privát)" />
+                  <Label layoutX="13.0" layoutY="521.0" text="Telefon (privát)" />
+                  <Label layoutX="13.0" layoutY="581.0" text="E-mail (munkahelyi)" />
+                  <Label layoutX="13.0" layoutY="641.0" text="Telefon (munkahelyi)" />
+                  <Label layoutX="13.0" layoutY="701.0" text="Megjegyzések" />
+                  <Label id="profileimgpathlabel" fx:id="profileimgpathlabel" layoutX="10.0" layoutY="195.0" prefHeight="17.0" prefWidth="205.0" text="Fájlnév" />
+                  <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="30.0" prefHeight="150.0" prefWidth="200.0" spacing="2.0">
+                     <children>
+                        <Label id="namelabel" fx:id="namelabel" alignment="CENTER" prefHeight="17.0" prefWidth="185.0" text="Kontaktszemély" textAlignment="CENTER" textFill="#140d57" />
+                        <ImageView id="newuserimgview" fx:id="newuserimgview" fitHeight="100.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/contacts.png" />
+                           </image>
+                        </ImageView>
+                        <Button id="btn_picfileupload" fx:id="btn_picfileupload" defaultButton="true" mnemonicParsing="false" onAction="#uploadProfileImg" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" text="Profilkép választása" textAlignment="CENTER" textFill="#403f46" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Label id="nodeitemlabel" fx:id="nodeitemlabel" layoutX="14.0" layoutY="140.0" prefHeight="17.0" prefWidth="278.0" text="Listaelem:" textFill="#6b5d5d" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="140.0">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <effect>
+                  <InnerShadow color="#c98282" />
+               </effect>
+            </Label>
+            <Label id="datetimelabel" fx:id="datetimelabel" layoutX="850.0" layoutY="900.0" text="Dátum / idő:" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="400.0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Separator layoutX="5.0" layoutY="130.0" prefHeight="15.0" prefWidth="1160.0" AnchorPane.topAnchor="130.0" />
+            <Pane id="exportofile" fx:id="exportofile" layoutX="1180.0" layoutY="160.0" prefHeight="535.0" prefWidth="227.0" visible="false" AnchorPane.bottomAnchor="220.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="160.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebedee" height="505.0" layoutY="30.0" stroke="#e4c1c1" strokeType="INSIDE" width="227.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8b959e" height="30.0" stroke="#b99b9b" strokeType="INSIDE" width="227.0" />
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="227.0" text="Exportálás fájlba" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField id="tf_filenamexls" fx:id="tf_filenamexls" layoutX="14.0" layoutY="72.0" prefHeight="20.0" prefWidth="200.0" promptText="fájlnév" />
+                  <Button id="btn_saveasxls" fx:id="btn_saveasxls" layoutX="53.0" layoutY="114.0" mnemonicParsing="false" text="Mentés XLS fájlként" textAlignment="CENTER" />
+                  <TextField id="tf_filenamepdf" fx:id="tf_filenamepdf" layoutX="14.0" layoutY="237.0" prefHeight="20.0" prefWidth="200.0" promptText="fájlnév" text="default" />
+                  <Button id="btn_saveaspdf" fx:id="btn_saveaspdf" layoutX="53.0" layoutY="279.0" mnemonicParsing="false" onAction="#exportToPdfFile" text="Mentés PDF fájlként" textAlignment="CENTER" />
+               </children>
+            </Pane>
+            <Pane id="searchpane" fx:id="searchpane" layoutX="1180.0" layoutY="160.0" prefHeight="680.0" prefWidth="227.0" visible="false" AnchorPane.bottomAnchor="160.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="120.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="650.0" layoutY="30.0" stroke="#8b7ce1" strokeType="INSIDE" width="227.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="2.0" fill="#bdae8a" height="30.0" stroke="#ab8686" strokeType="INSIDE" width="227.0" />
+                  <TextField id="searchfirstname" fx:id="searchfirstname1" layoutX="10.0" layoutY="144.0" promptText="Vezetéknév" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="searchlastname" fx:id="searchlastname1" layoutX="10.0" layoutY="219.0" promptText="Keresztnév" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="searchemail" fx:id="searchemail1" layoutX="10.0" layoutY="289.0" prefHeight="25.0" prefWidth="205.0" promptText="E-mail cím" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="searchemail2" fx:id="searchemail2" layoutX="10.0" layoutY="359.0" prefHeight="25.0" prefWidth="205.0" promptText="E-mail cím" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="searchphone" fx:id="searchphone1" layoutX="10.0" layoutY="429.0" prefHeight="25.0" prefWidth="205.0" promptText="Telefonszám" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <TextField id="searchphone2" fx:id="searchphone2" layoutX="10.0" layoutY="499.0" prefHeight="25.0" prefWidth="205.0" promptText="Telefonszám" style="-fx-background-color: #ffffff; -fx-border-color: #aaafff;" />
+                  <Button id="btn_search" fx:id="btn_search" layoutX="84.0" layoutY="641.0" mnemonicParsing="false" text="Keresés" textAlignment="CENTER" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="7.0" prefHeight="17.0" prefWidth="227.0" text="Kontakt keresése" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="479.0" text="Telefon (privát)" />
+                  <Label layoutX="10.0" layoutY="269.0" text="E-mail (privát)" />
+                  <Label layoutX="10.0" layoutY="124.0" text="Vezetéknév" />
+                  <Label layoutX="10.0" layoutY="199.0" text="Keresztnév" />
+                  <Label layoutX="10.0" layoutY="339.0" text="E-mail (munkahelyi)" />
+                  <Label layoutX="10.0" layoutY="409.0" text="Telefon (munkahelyi)" />
+                  <ImageView id="profilepicuploadimgview" fx:id="profilepicuploadimgview1" fitHeight="100.0" fitWidth="120.0" layoutX="109.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/contacts.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane id="datasheetpane" fx:id="datasheetpane" layoutX="1180.0" layoutY="160.0" prefHeight="800.0" prefWidth="227.0" AnchorPane.bottomAnchor="120.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="40.0">
+               <children>
+                  <Rectangle arcHeight="2.0" arcWidth="2.0" fill="WHITE" height="770.0" layoutY="30.0" stroke="#798594" strokeType="INSIDE" width="227.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="2.0" fill="#4f5961" height="30.0" stroke="#ab8686" strokeType="INSIDE" width="227.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutY="7.0" prefHeight="17.0" prefWidth="227.0" text="Adatlap" textAlignment="CENTER" textFill="#fffefe">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TitledPane id="profileimgpane" fx:id="profileimgpane" layoutX="13.0" layoutY="36.0" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" text="Profilkép">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="110.0" prefWidth="200.0">
+                           <children>
+                              <ImageView id="profilepicuploadimgview" fx:id="profilepicuploadimgview" fitHeight="100.0" fitWidth="120.0" layoutX="20.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="0.0">
+                                 <image>
+                                    <Image url="@../img/contacts.png" />
+                                 </image>
+                              </ImageView>
+                              <ToolBar id="profileimgtoolbar" fx:id="profileimgtoolbar" layoutX="154.0" layoutY="5.0" orientation="VERTICAL" prefHeight="100.0" prefWidth="40.0">
+                                <items>
+                                  <Button id="replaceimgbtn" fx:id="replaceimgbtn" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#uploadProfileImg" prefHeight="30.0" prefWidth="30.0" style="-fx-border-color: #ffaaff;" textAlignment="CENTER">
+                                       <effect>
+                                          <ImageInput>
+                                             <source>
+                                                <Image url="file:/C:/Users/VERESG/Documents/NetBeansProjects/PhoneBook/src/img/replace.png" />
+                                             </source>
+                                          </ImageInput>
+                                       </effect>
+                                    </Button>
+                                    <Button id="bigimgbtn" fx:id="bigimgbtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#showFullProfileImg" prefHeight="30.0" prefWidth="30.0" style="-fx-border-color: #ffaaff;" textAlignment="CENTER">
+                                       <effect>
+                                          <ImageInput>
+                                             <source>
+                                                <Image url="file:/C:/Users/VERESG/Documents/NetBeansProjects/PhoneBook/src/img/zoom.jpg" />
+                                             </source>
+                                          </ImageInput>
+                                       </effect>
+                                    </Button>
+                                </items>
+                              </ToolBar>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <Label id="dsfnamelabel" fx:id="dsfnamelabel" layoutX="10.0" layoutY="200.0" text="Vezetéknév">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="dsfnamelabel" fx:id="dslnamelabel" layoutX="10.0" layoutY="260.0" text="Keresztnév">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="dsdivlabel" fx:id="dsdivlabel" layoutX="10.0" layoutY="320.0" text="Osztály">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="dsjoblabel" fx:id="dsjoblabel" layoutX="10.0" layoutY="380.0" text="Beosztás">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="dsem1label" fx:id="dsem1label" layoutX="10.0" layoutY="440.0" text="E-mail (privát)">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="dstel1label" fx:id="dstel1label" layoutX="10.0" layoutY="500.0" text="Telefon (privát)">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="dsem2label" fx:id="dsem2label" layoutX="10.0" layoutY="560.0" text="E-mail (munkahelyi)">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="dstel2label" fx:id="dstel2label" layoutX="10.0" layoutY="620.0" text="Telefon (munkahelyi)">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label id="dsnoteslabel" fx:id="dsnoteslabel" layoutX="10.0" layoutY="680.0" text="Megjegyzések">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button id="btn_changedatasheet" fx:id="btn_changedatasheet" layoutX="23.0" layoutY="750.0" mnemonicParsing="false" onAction="#changeContactsData" style="-fx-background-color: #fffffb; -fx-border-color: #ffaaff;" text="Módosítás" textFill="#1732bc" />
+                  <Button id="btn_printdatasheet" fx:id="btn_printdatasheet" layoutX="130.0" layoutY="750.0" mnemonicParsing="false" style="-fx-background-color: #fffffb; -fx-border-color: #ffaaff;" text="Nyomtatás" textFill="#1732bc" />
+                  <Button id="btn_savedatasheet" fx:id="btn_savedatasheet" layoutX="31.0" layoutY="750.0" mnemonicParsing="false" onAction="#saveContactsData" style="-fx-background-color: #fffffb; -fx-border-color: #ffaaff;" text="Mentés" textFill="#1732bc" visible="false" />
+                  <TextField id="dsfirstnametf" fx:id="dsfirstnametf" editable="false" layoutX="10.0" layoutY="217.0" prefHeight="27.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" />
+                  <TextField id="dslastnametf" fx:id="dslastnametf" editable="false" layoutX="10.0" layoutY="277.0" prefHeight="27.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" />
+                  <TextField id="dsdivtf" fx:id="dsdivtf" editable="false" layoutX="10.0" layoutY="337.0" prefHeight="27.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" />
+                  <TextField id="dsjobpostf" fx:id="dsjobpostf" editable="false" layoutX="10.0" layoutY="397.0" prefHeight="27.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" />
+                  <TextField id="dsemailtf" fx:id="dsemailtf" editable="false" layoutX="10.0" layoutY="457.0" prefHeight="27.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" />
+                  <TextField id="dsphonetf" fx:id="dsphonetf" editable="false" layoutX="10.0" layoutY="517.0" prefHeight="27.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" />
+                  <TextField id="dsemail2tf" fx:id="dsemail2tf" editable="false" layoutX="10.0" layoutY="577.0" prefHeight="27.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" />
+                  <TextField id="dsphone2tf" fx:id="dsphone2tf" editable="false" layoutX="10.0" layoutY="637.0" prefHeight="27.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" />
+                  <TextArea id="dsnotestextarea" fx:id="dsnotestextarea" editable="false" layoutX="10.0" layoutY="697.0" prefHeight="30.0" prefWidth="205.0" style="-fx-background-color: #ffffff; -fx-border-color: #aaffff;" wrapText="true" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <SplitPane id="splitpane" fx:id="splitpane" dividerPositions="0.15962036238136323" layoutY="160.0" prefHeight="565.0" prefWidth="1150.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="160.0">
+        <items>
+          <AnchorPane prefHeight="563.0" prefWidth="200.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <StackPane id="menupane" fx:id="menupane" maxWidth="300.0" minWidth="200.0" prefHeight="560.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane prefHeight="560.0" prefWidth="950.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <Pane id="exportpane" fx:id="exportpane" prefHeight="560.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Pane id="contactpane" fx:id="contactpane" prefHeight="560.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TableView id="tableview" fx:id="tableview" editable="true" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="947.0">
+                           <columnResizePolicy>
+                              
+                           </columnResizePolicy>
+                        </TableView>
+                        <Label id="numofuserslabel" fx:id="numofuserslabel" layoutX="10.0" layoutY="610.0" text="Kontaktok száma: " textFill="#4a4848">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Pane id="menuinfopanel" fx:id="menuinfopanel" layoutX="410.0" layoutY="200.0" prefHeight="310.0" prefWidth="580.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d7dce1" height="287.0" layoutY="25.0" stroke="#c6b6b6" strokeType="INSIDE" width="580.0" />
+            <Button id="infopanelclosebutton" fx:id="infopanelclosebutton" layoutX="262.0" layoutY="270.0" mnemonicParsing="false" onAction="#closeMenuInfoPanel" text="Bezár" />
+            <TableView id="tblviewmenuinfo" fx:id="tblviewmenuinfo" layoutX="20.0" layoutY="30.0" prefHeight="230.0" prefWidth="540.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7f8a94" height="25.0" stroke="#977878" strokeType="INSIDE" width="580.0" />
+            <Label layoutX="5.0" layoutY="3.0" prefHeight="17.0" prefWidth="129.0" text="Információk" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
